@@ -1,0 +1,118 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define _D 0
+#define _L 1
+#define _R 2
+#define _N 3
+#define _F 4
+#define _Q 5
+
+/ {
+	combos {
+	    compatible = "zmk,combos";
+	    combo_numpad {
+		timeout-ms = <75>;
+		key-positions = <0 1>;
+		bindings = <&mo _N>;
+	    };
+	};
+
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+// -----------------------------------------------------------------------------------------
+// | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  |  ;  |  -  |
+// | BKSP |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |  '  |
+// | RET  |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | ESC |
+//              | GUI | LWR | SHFT| ALT |   | CTRL| SPC | RSE | FN  |
+                        bindings = <
+   &kp TAB   &kp Q    &kp W  &kp F     &kp P     &kp B     &kp J     &kp L     &kp U     &kp Y   &kp SEMI &kp MINUS
+   &kp BSPC  &kp A    &kp R  &kp S     &kp T     &kp G     &kp M     &kp N     &kp E     &kp I   &kp O    &kp APOS
+   &kp RET   &kp Z    &kp X  &kp C     &kp D     &kp V     &kp K     &kp H     &kp COMMA &kp DOT &kp FSLH &kp ESC
+             &kp LGUI &mo _L &kp LSHFT &kp LALT  &kp RCTRL &kp SPACE &mo _R    &mo _F 
+                        >;
+                };
+
+                lower_layer {
+// TODO Bluetooth (BT_SEL #, BT_CLR)
+// -----------------------------------------------------------------------------------------
+// | ALT  |     |     |     |     |     |   |  6  |  7  |  8  |  9  |  0  |     |
+// | SHFT |     | "|" |  ~  | NUM |     |   |     | LFT | DWN | UP  | RGT |  `  |
+// | CTRL |     |     |     |     |     |   |     |  _  |  =  |  +  |  \  |     |
+//              |     | ███ |     |     |   | CTRL| SHFT| ALT | GUI |
+                        bindings = <
+   &kp LALT  &trans &trans   &trans    &trans &trans &kp N6    &kp N7    &kp N8    &kp N9   &kp N0    &trans
+   &kp LSHFT &trans &kp PIPE &kp TILDE &trans &trans &trans    &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT &kp GRAVE
+   &kp LCTRL &trans &trans   &trans    &trans &trans &trans    &kp UNDER &kp EQUAL &kp PLUS &kp BSLH  &trans 
+                    &trans   &trans    &trans &trans &kp RCTRL &kp RSHFT &kp RALT  &kp RGUI
+                        >;
+                };
+
+                raise_layer {
+// -----------------------------------------------------------------------------------------
+// |      |  1  |  2  |  3  |  4  |  5  |   |     |     | PGUP| PGDN| INS | ALT |
+// | DEL  |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | SHFT|
+// |      |  [  |  ]  |  {  |  }  |  .  |   |     |     | HOM | END |     | CTRL|
+//              | GUI | CTRL| SHFT| ALT |   |     |     | ███ |     |
+                        bindings = <
+   &trans  &kp N1   &kp N2   &kp N3    &kp N4    &kp N5    &trans    &trans   &kp PG_UP &kp PG_DN &kp INS  &kp RALT
+   &kp DEL &kp EXCL &kp AT   &kp HASH  &kp DLLR  &kp PRCNT &kp CARET &kp AMPS &kp STAR  &kp LPAR  &kp RPAR &kp RSHFT
+   &trans  &kp LBKT &kp RBKT &kp LBRC  &kp RBRC  &kp DOT   &trans    &trans   &kp HOME  &kp END   &trans   &kp RCTRL
+                    &kp LGUI &kp LCTRL &kp LSHFT &kp LALT  &trans    &trans   &trans    &trans
+                        >;
+                };
+
+                num_layer {
+// -----------------------------------------------------------------------------------------
+// | ALT  |     |     |     |     |     |   |     |  7  |  8  |  9  |  /  |  =  |
+// | SHFT |     |     |     | ███ |     |   | BKSP|  4  |  5  |  6  | RET |  +  |
+// | CTRL |     |     |     |     |     |   | DEL |  1  |  2  |  3  |  *  |  -  |
+//              |     | ███ |     |     |   | TAB |  0  |  .  |  ,  |
+                        bindings = <
+   &kp LALT  &trans &trans &trans &trans &trans &trans   &kp KP_N7 &kp KP_N8  &kp KP_N9    &kp KP_SLASH &kp EQUAL
+   &kp LSHFT &trans &trans &trans &trans &trans &kp BSPC &kp KP_N4 &kp KP_N5  &kp KP_N6    &kp RET      &kp PLUS
+   &kp LCTRL &trans &trans &trans &trans &trans &kp DEL  &kp KP_N1 &kp KP_N2  &kp KP_N3    &kp STAR     &kp KP_MINUS
+                    &trans &trans &trans &trans &kp TAB  &kp KP_N0 &kp KP_DOT &kp COMMA
+                        >;
+                };
+
+                fn_layer {
+// -----------------------------------------------------------------------------------------
+// | F1  | F2  | F3  | F4  | F5  | F6  |   | F7  | F8  | F9  | F10 | F11 | F12  |
+// |PSCRN| PRV | NXT | PLAY| VUP | MUTE|   |     |     |     |     | BRUP| SHFT |
+// | SWP |     |     |     | VDN | CAPS|   | MENU|     |     |     | BRDN| CTRL |
+//             | GUI | CTRL| SHFT| ALT |   |     |     |     | ███ |
+                        bindings = <
+   &kp F1      &kp F2     &kp F3     &kp F4    &kp F5       &kp F6     &kp F7    &kp F8 &kp F9 &kp F10 &kp F11       &kp F12
+   &kp PSCRN   &kp C_PREV &kp C_NEXT &kp C_PP  &kp C_VOL_UP &kp C_MUTE &trans    &trans &trans &trans  &kp C_BRI_UP  &kp RSHFT
+   &tog _Q     &trans     &trans     &trans    &kp C_VOL_DN &kp CAPS   &kp K_APP &trans &trans &trans  &kp C_BRI_DN  &kp RCTRL
+                          &kp LGUI   &kp LCTRL &kp LSHFT    &kp LALT   &trans    &trans &trans &trans
+                        >;
+                };
+
+                qwerty_layer {
+// -----------------------------------------------------------------------------------------
+// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |  -   |
+// | BKSP |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '   |
+// | RET  |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | ESC  |
+//              | GUI | LWR | SHFT| ALT |   | CTRL| SPC | RSE | SWP |
+                        bindings = <
+   &kp TAB  &kp Q &kp W    &kp E  &kp R     &kp T    &kp Y     &kp U     &kp I     &kp O   &kp P    &kp MINUS 
+   &kp BSPC &kp A &kp S    &kp D  &kp F     &kp G    &kp H     &kp J     &kp K     &kp L   &kp SEMI &kp APOS
+   &kp RET  &kp Z &kp X    &kp C  &kp V     &kp B    &kp N     &kp M     &kp COMMA &kp DOT &kp FSLH &kp ESC
+                  &kp LGUI &mo _L &kp LSHFT &kp LALT &kp RCTRL &kp SPACE &mo _R    &mo _F
+                        >;
+                };
+
+        };
+};
+
