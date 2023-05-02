@@ -74,15 +74,15 @@
                 fn_layer {
 // ------------------------------------------------------------------------------------
 // | F1  | F2  | F3  | F4  | F5  | F6  |         | F7  | F8  | F9  | F10 | F11 | F12  |
-// |PSCRN| PLAY| NXT | BRUP| VUP | MUTE|         |     | BT1 | BT2 | BT3 | BT4 | SHFT |
-// | SWP |     | PRV | BRDN| VDN | CAPS|         |     |     |     |NUMLK| BT5 | CTRL |
+// |PSCRN| PLAY| NXT | VUP | MUTE| BRUP|         |     | BT1 | BT2 | BT3 | BT4 | SHFT |
+// | SWP |     | PRV | VDN |     | BRDN|         |     |     |NUMLK| CAPS| BT5 | CTRL |
 //             | GUI | CTRL| SHFT| ALT |         |BTCLR| MENU|     | ███ |
 // BT1 = iPad   BT2 = Desktop   BT3 = Laptop   BT4 = Phone   BT5 = ?
                         bindings = <
-   &kp F1      &kp F2     &kp F3     &kp F4       &kp F5       &kp F6     &kp F7     &kp F8       &kp F9       &kp F10      &kp F11      &kp F12
-   &kp PSCRN   &kp C_PP   &kp C_NEXT &kp C_BRI_UP &kp C_VOL_UP &kp C_MUTE &trans     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &kp RSHFT
-   &tog _Q     &trans     &kp C_PREV &kp C_BRI_DN &kp C_VOL_DN &kp CAPS   &trans     &trans       &trans       &kp KP_NUM   &bt BT_SEL 4 &kp RCTRL
-                          &kp LGUI   &kp LCTRL    &kp LSHFT    &kp LALT   &bt BT_CLR &kp K_APP    &trans       &trans
+   &kp F1      &kp F2     &kp F3     &kp F4       &kp F5     &kp F6       &kp F7     &kp F8       &kp F9       &kp F10      &kp F11      &kp F12
+   &kp PSCRN   &kp C_PP   &kp C_NEXT &kp C_VOL_UP &kp C_MUTE &kp C_BRI_UP &trans     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &kp RSHFT
+   &tog _Q     &trans     &kp C_PREV &kp C_VOL_DN &trans     &kp C_BRI_DN &trans     &trans       &kp KP_NUM   &kp CAPS     &bt BT_SEL 4 &kp RCTRL
+                          &kp LGUI   &kp LCTRL    &kp LSHFT  &kp LALT     &bt BT_CLR &kp K_APP    &trans       &trans
                         >;
                 };
 
@@ -95,8 +95,8 @@
 //              |     | ███ |     |     |         | CTRL| SHFT| ALT | GUI |
                         bindings = <
    &kp LALT  &trans   &trans  &trans    &trans &trans &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
-   &kp LSHFT &kp HOME &kp END &kp PG_UP &trans &trans &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kb TILDE &kp GRAVE 
-   &kp LCTRL &trans   &trans  &kb PG_DN &trans &trans &trans    &kp UNDER &kp EQUAL &kp PLUS  &kp BSLH  &trans 
+   &kp LSHFT &kp HOME &kp END &kp PG_UP &trans &trans &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp TILDE &kp GRAVE 
+   &kp LCTRL &trans   &trans  &kp PG_DN &trans &trans &trans    &kp UNDER &kp EQUAL &kp PLUS  &kp BSLH  &trans 
                       &trans  &trans    &trans &trans &kp RCTRL &kp RSHFT &kp RALT  &kp RGUI
                         >;
                 };
