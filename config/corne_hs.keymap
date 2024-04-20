@@ -16,15 +16,15 @@
 #define _R 5
 
 / {
-	combos {
-	    compatible = "zmk,combos";
-	    combo_num {
-		timeout-ms = <75>;
-		key-positions = <16 37>;
-		bindings = <&mo _N>;
-	    };
-
-	};
+//	combos {
+//	    compatible = "zmk,combos";
+//	    combo_num {
+//		timeout-ms = <75>;
+//		key-positions = <16 37>;
+//		bindings = <&mo _N>;
+//	    };
+//
+//	};
 
         keymap {
                 compatible = "zmk,keymap";
@@ -59,14 +59,14 @@
 
                 num_layer {
 // ------------------------------------------------------------------------------------
-// | ALT  |     |     |     |     |     |         |     |  7  |  8  |  9  |  *  |  =  |
-// | BKSP | SHFT|     |     | ███ |     |         | BKSP|  4  |  5  |  6  | RET |  +  |
-// | CTRL |     |     |     |     |     |         | DEL |  1  |  2  |  3  |  /  |  -  |
+// | ALT  |     |     |     |     |     |         |     |  7  |  8  |  9  |  +  |  -  |
+// | BKSP | SHFT|     |     | ███ |     |         | BKSP|  4  |  5  |  6  | RET |  =  |
+// | CTRL |     |     |     |     |     |         | DEL |  1  |  2  |  3  |  /  |  *  |
 //              |     | ███ |     |     |         | TAB |  0  |  .  |  ,  |
                         bindings = <
-   &kp LALT  &trans    &trans &trans &trans &trans &trans   &kp KP_N7 &kp KP_N8  &kp KP_N9 &kp STAR     &kp EQUAL
-   &kp BSPC  &kp LSHFT &trans &trans &trans &trans &kp BSPC &kp KP_N4 &kp KP_N5  &kp KP_N6 &kp RET      &kp PLUS
-   &kp LCTRL &trans    &trans &trans &trans &trans &kp DEL  &kp KP_N1 &kp KP_N2  &kp KP_N3 &kp KP_SLASH &kp KP_MINUS
+   &kp LALT  &trans    &trans &trans &trans &trans &trans   &kp KP_N7 &kp KP_N8  &kp KP_N9 &kp PLUS     &kp KP_MINUS
+   &kp BSPC  &kp LSHFT &trans &trans &trans &trans &kp BSPC &kp KP_N4 &kp KP_N5  &kp KP_N6 &kp RET      &kp EQUAL
+   &kp LCTRL &trans    &trans &trans &trans &trans &kp DEL  &kp KP_N1 &kp KP_N2  &kp KP_N3 &kp KP_SLASH &kp STAR
                        &trans &trans &trans &trans &kp TAB  &kp KP_N0 &kp KP_DOT &kp COMMA
                         >;
                 };
@@ -89,13 +89,13 @@
 
                 lower_layer {
 // ------------------------------------------------------------------------------------
-// | ALT  |     |     |     |     |     |         |  6  |  7  |  8  |  9  |  0  |     |
+// | ALT  |  1  |  2  |  3  |  4  |  5  |         |  6  |  7  |  8  |  9  |  0  |     |
 // | SHFT | HOM | END | PGUP| NUM |     |         | LFT | DWN | UP  | RGT |  ~  |  `  |
 // | CTRL |     |     | PGDN|     |     |         |     |  _  |  =  |  +  |  \  |     |
 //              |     | ███ |     |     |         | CTRL| SHFT| ALT | GUI |
                         bindings = <
-   &kp LALT  &trans   &trans  &trans    &trans &trans &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
-   &kp LSHFT &kp HOME &kp END &kp PG_UP &trans &trans &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp TILDE &kp GRAVE 
+   &kp LALT  &kp N1   &kp N2  &kp N3    &kp N4 &kp N5 &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
+   &kp LSHFT &kp HOME &kp END &kp PG_UP &mo _N &trans &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp TILDE &kp GRAVE 
    &kp LCTRL &trans   &trans  &kp PG_DN &trans &trans &trans    &kp UNDER &kp EQUAL &kp PLUS  &kp BSLH  &trans 
                       &trans  &trans    &trans &trans &kp RCTRL &kp RSHFT &kp RALT  &kp RGUI
                         >;
@@ -103,14 +103,14 @@
 
                 raise_layer {
 // ------------------------------------------------------------------------------------
-// |      |  1  |  2  |  3  |  4  |  5  |         |     |     |     |     | INS | ALT |
+// |      |  1  |  2  |  3  |  4  |  5  |         |  6  |  7  |  8  |  9  |  0  | ALT |
 // | DEL  |  !  |  @  |  #  |  $  |  %  |         |  ^  |  &  |  *  |  (  |  )  | SHFT|
-// |      |  [  |  ]  |  {  |  }  |  .  |         |     |     | "|" |     |     | CTRL|
+// |      |  [  |  ]  |  {  |  }  |  .  |         |     |     | "|" |     | INS | CTRL|
 //              | GUI | CTRL| SHFT| ALT |         |     |     | ███ |     |
                         bindings = <
-   &trans  &kp N1   &kp N2   &kp N3    &kp N4    &kp N5    &trans    &trans   &trans    &trans    &kp INS  &kp RALT
+   &trans  &kp N1   &kp N2   &kp N3    &kp N4    &kp N5    &kp N6    &kp N7   &kp N8    &kp N9    &kp N0   &kp RALT
    &kp DEL &kp EXCL &kp AT   &kp HASH  &kp DLLR  &kp PRCNT &kp CARET &kp AMPS &kp STAR  &kp LPAR  &kp RPAR &kp RSHFT
-   &trans  &kp LBKT &kp RBKT &kp LBRC  &kp RBRC  &kp DOT   &trans    &trans   &kp PIPE  &trans    &trans   &kp RCTRL
+   &trans  &kp LBKT &kp RBKT &kp LBRC  &kp RBRC  &kp DOT   &trans    &trans   &kp PIPE  &trans    &kp INS  &kp RCTRL
                     &kp LGUI &kp LCTRL &kp LSHFT &kp LALT  &trans    &trans   &trans    &trans
                         >;
                 };
